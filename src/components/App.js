@@ -24,7 +24,7 @@ const StyledApp = styled.main`
   justify-content: center;
   align-items: center;
   // background: ${colors.black};
-  background: blue;
+  background: red;
 `
 
 export default class App extends Component {
