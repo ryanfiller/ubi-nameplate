@@ -23,8 +23,7 @@ const StyledApp = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  // background: ${colors.black};
-  background: blue;
+  background: ${colors.black};
 `
 
 export default class App extends Component {
@@ -35,7 +34,7 @@ export default class App extends Component {
         caches.delete(caches).then(function(boolean) {
           window.location.reload(true)
         });
-      }, .25 * 60 * 1000);
+      }, 5 * 60 * 1000);
   }
 
   render() {
