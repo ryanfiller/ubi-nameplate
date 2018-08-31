@@ -23,19 +23,18 @@ const StyledApp = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  // background: ${colors.black};
-  background: green;
+  background: ${colors.black};
 `
 
 export default class App extends Component {
 
   componentDidMount() {
-    // five minutes refresh timer
-    setInterval(function() {
-        caches.delete(caches).then(function(boolean) {
-          window.location.reload(true)
-        });
-      }, 5 * 60 * 1000);
+    // // five minutes refresh timer
+    // setInterval(function() {
+    //     caches.delete(caches).then(function(boolean) {
+    //       window.location.reload(true)
+    //     });
+    //   }, 5 * 60 * 1000);
   }
 
   render() {
