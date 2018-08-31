@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import styled, { injectGlobal } from 'styled-components'
 import { colors } from '../config/config'
+
 import Info from './info';
 import Person from './person'
 
