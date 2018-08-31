@@ -32,7 +32,7 @@ export default class App extends Component {
   componentDidMount() {
     // fifteen minutes refresh timer
     setInterval(function() {
-      window.location.reload()
+      window.location.reload(true)
       }, 5 * 60 * 1000);
   }
 
