@@ -23,8 +23,7 @@ const StyledApp = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  // background: ${colors.black};
-  background: blue;
+  background: ${colors.black};
 `
 
 export default class App extends Component {
