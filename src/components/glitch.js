@@ -3,28 +3,37 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components'
 import { colors, transition } from '../config/config'
 
-const animation1 = keyframes`
+// const animation1 = keyframes`
 
-    ${for (i = 0; i < 19; i++) { 
-        "<br>"
-    }}
+//     ${for (i = 0; i < 19; i++) { 
+//         // text += cars[i] + "<br>";
+//     }}
 
-    // @for $i from 0 through $steps{
-    //     #{percentage($i*(1/$steps))}{
-    //     clip: rect(random(100)+px,9999px,random(100)+px,0);
-    //     }
-    // }
-`
+//     // @for $i from 0 through $steps{
+//     //     #{percentage($i*(1/$steps))}{
+//     //     clip: rect(random(100)+px,9999px,random(100)+px,0);
+//     //     }
+//     // }
+// `
 
-const animation2 = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
+const animation = function() {
 
-  to {
-    transform: rotate(360deg);
-  }
-`
+    var array = []
+    
+    for (var i = 1; i <= 20; i++) { 
+
+        var random = Math.floor(Math.random() * 100) + 1
+
+        array.push(`
+        ${i * 5}% {
+            clip: rect(${random}px,9999px,random(100)+px,0);
+        }
+        `)
+    }
+
+    return array.join("");
+};
+
 
 const StyledGlitch = styled.div`
     position: relative;
@@ -36,7 +45,7 @@ const StyledGlitch = styled.div`
         top: 0;
         overflow:hidden;
         clip: rect(0,900px,0,0);
-        animation: ${animation1} ${transition} infinite linear alternate-reverse;
+        animation: ${animation} ${transition} infinite linear alternate-reverse;
         width: 100%;
     }
 
@@ -48,7 +57,7 @@ const StyledGlitch = styled.div`
         top: 0;
         overflow: hidden;
         clip: rect(0,900px,0,0);
-        animation: ${animation1} ${transition} infinite linear alternate-reverse;
+        animation: ${animation} ${transition} infinite linear alternate-reverse;
         width: 100%;
     }
 
@@ -74,9 +83,6 @@ const StyledGlitch = styled.div`
 `
 
 export default class Glitch extends Component {
-
-    super(props) {
-    }
 
   render() {
     return (
@@ -105,7 +111,7 @@ export default class Glitch extends Component {
 //         $steps: 20;
 //         @for $i from 0 through $steps{
 //             #{percentage($i*(1/$steps))}{
-//             clip: rect(random(100)+px,9999px,random(100)+px,0);
+//               clip: rect(random(100)+px,9999px,random(100)+px,0);
 //             }
 //         }
 //     }

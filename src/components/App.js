@@ -29,15 +29,6 @@ const StyledApp = styled.main`
 
 export default class App extends Component {
 
-  componentDidMount() {
-    // // five minutes refresh timer
-    // setInterval(function() {
-    //     caches.delete(caches).then(function(boolean) {
-    //       window.location.reload(true)
-    //     });
-    //   }, 5 * 60 * 1000);
-  }
-
   render() {
     return (
       <StyledApp>
