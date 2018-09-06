@@ -3,31 +3,20 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components'
 import { colors, transition } from '../config/config'
 
-// const animation1 = keyframes`
-
-//     ${for (i = 0; i < 19; i++) { 
-//         // text += cars[i] + "<br>";
-//     }}
-
-//     // @for $i from 0 through $steps{
-//     //     #{percentage($i*(1/$steps))}{
-//     //     clip: rect(random(100)+px,9999px,random(100)+px,0);
-//     //     }
-//     // }
-// `
 
 const animation = function() {
 
     var array = []
     
-    for (var i = 1; i <= 20; i++) { 
+    for (var i = 0; i <= 20; i++) { 
 
-        var random = Math.floor(Math.random() * 100) + 1
+        var random1 = Math.floor(Math.random() * 100) + 1
+        var random2 = Math.floor(Math.random() * 100) + 1
 
         array.push(`
-        ${i * 5}% {
-            clip: rect(${random}px,9999px,random(100)+px,0);
-        }
+            ${i * 5}% {
+                clip: rect(${random1}px,9999px,${random2}px,0);
+            }
         `)
     }
 
@@ -38,6 +27,14 @@ const animation = function() {
 const StyledGlitch = styled.div`
     position: relative;
 
+    @keyframes noise1 {
+        ${animation()}
+    }
+
+    @keyframes noise2 {
+        ${animation()}
+    }
+
     *:nth-child(1) {
         pointer-events: none;
         position: absolute;
@@ -45,8 +42,9 @@ const StyledGlitch = styled.div`
         top: 0;
         overflow:hidden;
         clip: rect(0,900px,0,0);
-        animation: ${animation} ${transition} infinite linear alternate-reverse;
+        animation: noise1 ${transition} infinite linear alternate-reverse;
         width: 100%;
+        z-index: 3;
     }
 
     *:nth-child(2) {
@@ -57,8 +55,14 @@ const StyledGlitch = styled.div`
         top: 0;
         overflow: hidden;
         clip: rect(0,900px,0,0);
-        animation: ${animation} ${transition} infinite linear alternate-reverse;
+        animation: noise2 ${transition} infinite linear alternate-reverse;
         width: 100%;
+        z-index: 2;
+    }
+
+    *:nth-child(3) {
+        position: relative;
+        z-index: 1;
     }
 
     * {
@@ -83,8 +87,8 @@ const StyledGlitch = styled.div`
 `
 
 export default class Glitch extends Component {
-
   render() {
+
     return (
       <StyledGlitch>
           {this.props.children}

@@ -8,4 +8,4 @@ export const fonts = {
     secondary: "'Dosis', sans-serif"
 }
 
-export const transition = '2s'
+export const transition = '5s'
