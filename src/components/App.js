@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import styled, { injectGlobal } from 'styled-components'
 import { colors } from '../config/config'
+
 import Info from './info';
 import Person from './person'
 
@@ -27,15 +28,6 @@ const StyledApp = styled.main`
 `
 
 export default class App extends Component {
-
-  componentDidMount() {
-    // // five minutes refresh timer
-    // setInterval(function() {
-    //     caches.delete(caches).then(function(boolean) {
-    //       window.location.reload(true)
-    //     });
-    //   }, 5 * 60 * 1000);
-  }
 
   render() {
     return (

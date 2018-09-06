@@ -7,3 +7,5 @@ export const fonts = {
     primary: "'Raleway', sans-serif",
     secondary: "'Dosis', sans-serif"
 }
+
+export const transition = '5s'
