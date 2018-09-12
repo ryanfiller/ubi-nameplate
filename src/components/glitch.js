@@ -1,7 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 
 import styled, { keyframes } from 'styled-components'
 import { colors, transition } from '../config/config'
+export default class Glitch extends Component {
+
+    state = {
+        text: ''
+    }
+  
+    componentDidMount() {
+        this.setState({
+            text: ReactDOM.findDOMNode(this).children[0].innerHTML
+        })
+    }
+
+    render() {
+
+        return (
+            <StyledGlitch text={this.state.text}>
+                {this.props.children}
+                {console.log(this.state.text)}
+            </StyledGlitch>
+        );
+    }
+}
 
 
 const animation = function() {
@@ -35,34 +58,32 @@ const StyledGlitch = styled.div`
         ${animation()}
     }
 
-    *:nth-child(1) {
-        pointer-events: none;
-        position: absolute;
-        left: -1px;
-        top: 0;
-        overflow:hidden;
-        clip: rect(0,900px,0,0);
-        animation: noise1 ${transition} infinite linear alternate-reverse;
-        width: 100%;
-        z-index: 3;
-    }
-
-    *:nth-child(2) {
-        pointer-events: none;
-        content: attr(data-text);
-        position: absolute;
-        left: 1px;
-        top: 0;
-        overflow: hidden;
-        clip: rect(0,900px,0,0);
-        animation: noise2 ${transition} infinite linear alternate-reverse;
-        width: 100%;
-        z-index: 2;
-    }
-
-    *:nth-child(3) {
+    & > * {
         position: relative;
         z-index: 1;
+
+        &:before, &:after {
+            content: '${props => props.text}';
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            overflow: hidden;
+            clip: rect(0,900px,0,0);
+        }
+
+        &:before {
+                left: -1px;
+                animation: noise1 ${transition} infinite linear alternate-reverse;
+                width: 100%;
+                z-index: 3;
+            }
+        
+        &:after {
+            left: 1px;
+            animation: noise2 ${transition} infinite linear alternate-reverse;
+            width: 100%;
+            z-index: 2;
+        }
     }
 
     * {
@@ -85,42 +106,3 @@ const StyledGlitch = styled.div`
     }
 
 `
-
-export default class Glitch extends Component {
-  render() {
-
-    return (
-      <StyledGlitch>
-          {this.props.children}
-          {this.props.children}
-          {this.props.children}
-      </StyledGlitch>
-    );
-  }
-}
-
-
-// @mixin glitch($color:$color-black, $background:$color-white) {
-
-//     @keyframes noise-anim {
-        // $steps: 20;
-        // @for $i from 0 through $steps{
-        //     #{percentage($i*(1/$steps))}{
-        //       clip: rect(random(100)+px,9999px,random(100)+px,0);
-        //     }
-        // }
-//     }
-
-//     @keyframes noise-anim-2 {
-//         $steps: 20;
-//         @for $i from 0 through $steps{
-//             #{percentage($i*(1/$steps))}{
-//               clip: rect(random(100)+px,9999px,random(100)+px,0);
-//             }
-//         }
-//     }
-
-//     color: $color;
-//     position: relative;
-
-// }
