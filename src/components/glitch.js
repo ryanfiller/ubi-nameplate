@@ -60,33 +60,6 @@ const StyledGlitch = styled.div`
 
     & > * {
         position: relative;
-        z-index: 1;
-
-        &:before, &:after {
-            content: '${props => props.text}';
-            pointer-events: none;
-            position: absolute;
-            top: 0;
-            overflow: hidden;
-            clip: rect(0,900px,0,0);
-        }
-
-        &:before {
-                left: -1px;
-                animation: noise1 ${transition} infinite linear alternate-reverse;
-                width: 100%;
-                z-index: 3;
-            }
-        
-        &:after {
-            left: 1px;
-            animation: noise2 ${transition} infinite linear alternate-reverse;
-            width: 100%;
-            z-index: 2;
-        }
-    }
-
-    * {
         color: ${colors.white};
         background: ${colors.black};
         text-shadow: 
@@ -103,6 +76,30 @@ const StyledGlitch = styled.div`
         -.25em 0px .25em rgba(255, 255, 0, .125),
 
         0px 0px .125em rgba(0, 0, 0, .15);
+
+        
+
+        &:before, &:after {
+            content: '${props => props.text}';
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            overflow: hidden;
+            clip: rect(0,900px,0,0);
+            text-shadow: none;
+        }
+
+        &:before {
+                left: -1px;
+                animation: noise1 ${transition} infinite linear alternate-reverse;
+                width: 100%;
+            }
+        
+        &:after {
+            left: 1px;
+            animation: noise2 ${transition} infinite linear alternate-reverse;
+            width: 100%;
+        }
     }
 
 `
